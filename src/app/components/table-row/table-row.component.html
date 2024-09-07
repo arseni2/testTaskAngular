@@ -1,0 +1,97 @@
+@if (isEditMode()) {
+<ng-container [formGroup]="updateForm">
+  <td class="align-baseline px-6 py-4 font-medium text-gray-900 dark:text-white">
+    <div class="flex gap-2 items-center">
+      <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+      </svg>
+
+      <app-input formControlName="fullName" placeholder="имя"></app-input>
+    </div>
+  </td>
+  <td class="px-6 py-4 flex flex-col gap-6">
+    <div class="flex gap-2 items-center">
+      <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+      </svg>
+
+      <app-input formControlName="time" placeholder="время"></app-input>
+    </div>
+    <div class="flex gap-2 items-center">
+      <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+      </svg>
+
+      <app-input formControlName="date" placeholder="дата"></app-input>
+    </div>
+  </td>
+  <td
+    class="px-6 py-4 cursor-pointer">
+    <p class="w-[400px]
+            overflow-hidden
+            text-ellipsis
+            whitespace-normal
+            'break-words' }}"
+    >
+      <textarea formControlName="message" class="focus:outline-none focus:border-blue-500 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" placeholder="сообщение"></textarea>
+    </p>
+  </td>
+  <td class="px-6 py-4 flex flex-col gap-2">
+    <div (click)="update()" class="transition-all text-center cursor-pointer text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">сохранить</div>
+    <div (click)="changeEditMode()" class="transition-all text-center cursor-pointer text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 px-5 py-2.5">отмена</div>
+  </td>
+</ng-container>
+}
+@else {
+  <td class="align-baseline px-6 py-4 font-medium text-gray-900 dark:text-white">
+    <div class="flex gap-2 items-center">
+      <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+      </svg>
+
+      <p>{{ user.firstName }} {{ user.lastName }}</p>
+    </div>
+  </td>
+  <td class="px-6 py-4 flex gap-6">
+    <div class="flex gap-2 items-center">
+      <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+      </svg>
+
+      <p>{{ user.time }}</p>
+    </div>
+    <div class="flex gap-2 items-center">
+      <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+      </svg>
+
+      <p>{{ user.date }}</p>
+    </div>
+  </td>
+  <td
+    (click)="expandedIndex.set(expandedIndex() === i ? -1 : i)"
+    class="px-6 py-4 cursor-pointer">
+    <p class="w-[400px]
+            overflow-hidden
+            text-ellipsis
+            whitespace-normal
+            {{ expandedIndex() === i ? 'break-words' : 'truncate' }}"
+    >
+      {{ user.message }}
+    </p>
+  </td>
+  <td class="px-6 py-4 flex gap-2">
+    <div (click)="changeEditMode()" class="border border-gray-200 rounded-lg text-sm p-2.5 text-center inline-flex items-center cursor-pointer transition-all group hover:border-blue-500">
+      <svg class="transition-all w-5 h-5 group-hover:text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
+      </svg>
+    </div>
+
+    <div (click)="deleteUserById(user.id)" class="border border-gray-200 rounded-lg text-sm p-2.5 text-center inline-flex items-center cursor-pointer transition-all group hover:border-red-500">
+      <svg class="transition-all w-5 h-5 group-hover:text-red-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+      </svg>
+    </div>
+  </td>
+}
+
